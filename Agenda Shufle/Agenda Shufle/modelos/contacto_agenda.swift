@@ -6,13 +6,18 @@
 //
 
 import SwiftUI
-
-struct contacto_agenda: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+//creamos una estructura, y luego el protocolo identifiable, que será una forma de identificarse único
+struct ContactoAgenda: Identifiable {
+    var nombre: String
+    var telefono: String
+    var id: String { nombre }
 }
-
-#Preview {
-    contacto_agenda()
-}
+var nombre = "Pepito Veraz"
+/* Esto es pseudocodigo por lo que esta mal
+var nombre: set{
+    let nombre_validado = filtrar_palabras(value):
+    nombre = value
+} get {
+    return nombre.split(" ")[0]
+}*/
+ 
