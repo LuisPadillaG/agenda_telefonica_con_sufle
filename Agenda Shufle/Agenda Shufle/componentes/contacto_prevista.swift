@@ -7,12 +7,16 @@
 
 import SwiftUI
 
-struct contacto_prevista: View {
+struct ContactoPrevista: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack{
+            Image(systemName: "globe")
+            Text("Hello Darknes!")
+            Text("My good compai")
+        }
     }
 }
 
 #Preview {
-    contacto_prevista()
+    ContactoPrevista()
 }
