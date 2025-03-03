@@ -29,13 +29,51 @@ struct PantallaAgenda: View {
                     //Text("\(contacto.nombre)")
                     ContactoPrevista(contacto_a_mostrar: contacto)
                 }
-                .background(Color.cyan) 
-            }.frame(width: largo_de_pantalla, alignment: Alignment.center)
+                
+            }.frame(alignment: Alignment.center)
+                .background(Color.cyan)
+                .padding(10)
+                .background(Color.cyan)
+            
         }
         .background(Color.green)
         
         .navigationTitle("---") //inutulizable casi
         .listStyle(.plain)
+        HStack(alignment: VerticalAlignment.center, spacing: 25){
+            ZStack{
+                Circle()
+                    .frame(width: 100)
+                    .foregroundStyle(Color.green)
+                Rectangle()
+                    .frame(width: 65, height: 65)
+                    .foregroundColor(Color.cyan)
+                Image(systemName: "plus")
+                    .background(Color.red)
+                    .offset(x: 0, y: -25)
+            }
+            .padding(15)
+            .onTapGesture {
+                print("Falta implementar esta parte")
+            }
+            
+            Spacer()
+            
+            ZStack{
+                Circle()
+                    .frame(width: 100)
+                    .foregroundStyle(Color.green)
+                Circle()
+                    .frame(width: 65, height: 65)
+                    .foregroundColor(Color.cyan)
+                Image(systemName: "shuffle")
+                    .background(Color.red)
+            }
+            .padding(15)
+            .onTapGesture {
+                print("Lanzar un intent para comenzar la llamada")
+            }
+        }
     }
 }
 
