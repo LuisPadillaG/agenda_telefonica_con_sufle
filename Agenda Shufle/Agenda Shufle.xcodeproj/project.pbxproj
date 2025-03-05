@@ -15,6 +15,7 @@
 		FB1B05262D6F8715002B68E2 /* contacto_agenda.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1B05252D6F8715002B68E2 /* contacto_agenda.swift */; };
 		FBD93FF32D7618CC00915B71 /* pantalla_agregar_contacto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD93FF22D7618CC00915B71 /* pantalla_agregar_contacto.swift */; };
 		FBD93FF52D761C5200915B71 /* icono.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD93FF42D761C5200915B71 /* icono.swift */; };
+		FBDCF0E82D78BCDF00F5BCB6 /* pantalla_del_ganador.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDCF0E72D78BCDF00F5BCB6 /* pantalla_del_ganador.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		FB1B05252D6F8715002B68E2 /* contacto_agenda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contacto_agenda.swift; sourceTree = "<group>"; };
 		FBD93FF22D7618CC00915B71 /* pantalla_agregar_contacto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pantalla_agregar_contacto.swift; sourceTree = "<group>"; };
 		FBD93FF42D761C5200915B71 /* icono.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = icono.swift; sourceTree = "<group>"; };
+		FBDCF0E72D78BCDF00F5BCB6 /* pantalla_del_ganador.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pantalla_del_ganador.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				FBD93FF22D7618CC00915B71 /* pantalla_agregar_contacto.swift */,
+				FBDCF0E72D78BCDF00F5BCB6 /* pantalla_del_ganador.swift */,
 			);
 			path = pantallas;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 				FBD93FF52D761C5200915B71 /* icono.swift in Sources */,
 				FB1B05202D6F7C0C002B68E2 /* PantallaAgenda.swift in Sources */,
 				FB1B05232D6F7FC4002B68E2 /* contacto_prevista.swift in Sources */,
+				FBDCF0E82D78BCDF00F5BCB6 /* pantalla_del_ganador.swift in Sources */,
 				FB1B05262D6F8715002B68E2 /* contacto_agenda.swift in Sources */,
 				FBD93FF32D7618CC00915B71 /* pantalla_agregar_contacto.swift in Sources */,
 				FB1B05122D6F7980002B68E2 /* Agenda_ShufleApp.swift in Sources */,
