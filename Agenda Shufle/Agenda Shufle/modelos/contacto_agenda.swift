@@ -11,6 +11,7 @@ struct ContactoAgenda: Identifiable {
     var nombre: String
     var telefono: String
     var id: String { nombre }
+    //var imagen: String = "imagen"
 }
 var nombre = "Pepito Veraz"
 /* Esto es pseudocodigo por lo que esta mal

@@ -16,11 +16,15 @@ var contactos = [
     ContactoAgenda(nombre: "Juaewefano", telefono:"3225"),
     ContactoAgenda(nombre: "Joan", telefono:"52415"),
 ]
+
+enum PantallasDisponibles: String, Identifiable{
+    case pantalla_agregar, pantalla_del_ganador
+    var id: String {rawValue}
+}
 struct PantallaAgenda: View {
     var largo_de_pantalla = UIScreen.main.bounds.width
     var ancho_de_pantalla = UIScreen.main.bounds.height
     
-    @State var mostrar_pantalla_agregar_contacto: Bool = false
     @State var contactos_actuales: [ContactoAgenda] = [
         ContactoAgenda(nombre: "Juan", telefono:"12345"),
         ContactoAgenda(nombre: "Juana", telefono:"123455"),
@@ -31,6 +35,7 @@ struct PantallaAgenda: View {
         ContactoAgenda(nombre: "Juaewefano", telefono:"3225"),
         ContactoAgenda(nombre: "Joan", telefono:"52415"),
     ]
+    @State var pantalla_a_mostrar: PantallasDisponibles?
     var body: some View {
         ScrollView{
             VStack (spacing: 10){
@@ -43,12 +48,12 @@ struct PantallaAgenda: View {
                 }
                 
             }.frame(alignment: Alignment.center)
-                .background(Color.cyan)
+                .background(Color(white: 0.9, opacity: 0.7))
                 .padding(10)
-                .background(Color.cyan)
+                .background(Color(white: 0.9, opacity: 0.7))
             
         }
-        .background(Color.green)
+        .background(Color.white)
         
         .navigationTitle("---") //inutulizable casi
         .listStyle(.plain)
@@ -61,13 +66,12 @@ struct PantallaAgenda: View {
                     .frame(width: 65, height: 65)
                     .foregroundColor(Color.cyan)
                 Image(systemName: "plus")
-                    .background(Color.red)
-                    .offset(x: 0, y: -25)
+                    .foregroundColor(Color.white)
             }
             .padding(15)
             .onTapGesture {
                 print("Falta implementar la seccion de agregar contacto")
-                mostrar_pantalla_agregar_contacto.toggle()
+                pantalla_a_mostrar = PantallasDisponibles.pantalla_agregar
             }
             
             Spacer()
@@ -80,22 +84,35 @@ struct PantallaAgenda: View {
                     .frame(width: 65, height: 65)
                     .foregroundColor(Color.cyan)
                 Image(systemName: "shuffle")
-                    .background(Color.red)
+                    .foregroundColor(Color.white)
             }
             .padding(15)
             .onTapGesture {
                 print("Lanzar un intent para comenzar la llamada")
+                pantalla_a_mostrar = PantallasDisponibles.pantalla_del_ganador
             }
         }.background(Color.purple)
-            .sheet(isPresented: $mostrar_pantalla_agregar_contacto){
-                PantallaAgregarContacto(boton_salir: {
-                    mostrar_pantalla_agregar_contacto.toggle()
-                },
-                    boton_agregar: {nombre, numero in
-                    let contacto_nuevo = ContactoAgenda(nombre: nombre, telefono: numero)
-                    contactos_actuales.append(contacto_nuevo)
-                    mostrar_pantalla_agregar_contacto.toggle()
-                    })
+            .sheet(item: $pantalla_a_mostrar){ pantalla in
+                switch(pantalla){
+                case .pantalla_agregar:
+                    PantallaAgregarContacto(
+                        boton_salir: {
+                            pantalla_a_mostrar = PantallasDisponibles.pantalla_del_ganador
+                            
+                    },
+                        boton_agregar: {nombre, numero in
+                            let contacto_nuevo = ContactoAgenda(nombre: nombre, telefono:
+                                                                    numero)
+                            contactos_actuales.append(contacto_nuevo)
+                            pantalla_a_mostrar = nil
+                            
+                        }
+                        
+                    )
+                
+                case .pantalla_del_ganador:
+                                pantalla_del_ganador(contacto_a_molestar: contactos_actuales.randomElement() ?? ContactoAgenda(nombre: "Desconocido", telefono: "0000"))
+                            }
             }
     }
 }
