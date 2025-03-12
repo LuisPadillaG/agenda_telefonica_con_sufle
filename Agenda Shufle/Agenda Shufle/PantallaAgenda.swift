@@ -11,10 +11,10 @@ var contactos = [
     ContactoAgenda(nombre: "Juana", telefono:"123455"),
     ContactoAgenda(nombre: "Juaewefano", telefono:"3225"),
     ContactoAgenda(nombre: "Joan", telefono:"52415"),
-    ContactoAgenda(nombre: "Juan", telefono:"12345"),
-    ContactoAgenda(nombre: "Juana", telefono:"123455"),
-    ContactoAgenda(nombre: "Juaewefano", telefono:"3225"),
-    ContactoAgenda(nombre: "Joan", telefono:"52415"),
+    ContactoAgenda(nombre: "Puan", telefono:"12345"),
+    ContactoAgenda(nombre: "Luana", telefono:"123455"),
+    ContactoAgenda(nombre: "Duaewefano", telefono:"3225"),
+    ContactoAgenda(nombre: "Eoan", telefono:"52415"),
 ]
 
 enum PantallasDisponibles: String, Identifiable{
@@ -28,32 +28,38 @@ struct PantallaAgenda: View {
     @State var contactos_actuales: [ContactoAgenda] = [
         ContactoAgenda(nombre: "Juan", telefono:"12345"),
         ContactoAgenda(nombre: "Juana", telefono:"123455"),
-        ContactoAgenda(nombre: "Juaewefano", telefono:"3225"),
+        ContactoAgenda(nombre: "Goku", telefono:"3225"),
         ContactoAgenda(nombre: "Joan", telefono:"52415"),
-        ContactoAgenda(nombre: "Juan", telefono:"12345"),
-        ContactoAgenda(nombre: "Juana", telefono:"123455"),
-        ContactoAgenda(nombre: "Juaewefano", telefono:"3225"),
-        ContactoAgenda(nombre: "Joan", telefono:"52415"),
+        ContactoAgenda(nombre: "Puan", telefono:"12345"),
+        ContactoAgenda(nombre: "Luana", telefono:"123455"),
+        ContactoAgenda(nombre: "Duaewefano", telefono:"3225"),
+        ContactoAgenda(nombre: "Eoan", telefono:"52415"),
     ]
     @State var pantalla_a_mostrar: PantallasDisponibles?
     var body: some View {
-        ScrollView{
-            VStack (spacing: 10){
-                /*ForEach(0...15, id: \.self){_ in
-                    ContactoPrevista()
-                }*/
-                ForEach(contactos_actuales){ contacto in
-                    //Text("\(contacto.nombre)")
-                    ContactoPrevista(contacto_a_mostrar: contacto)
-                }
+        NavigationStack{
+            ScrollView{
+                VStack (spacing: 10){
+                    /*ForEach(0...15, id: \.self){_ in
+                        ContactoPrevista()
+                    }*/
+                    ForEach(contactos_actuales){ contacto in
+                        NavigationLink{
+                            pantalla_contacto_unico(contacto_a_molestardos: contacto)
+                                .foregroundColor(.black)
+                        } label:{
+                            ContactoPrevista(contacto_a_mostrar: contacto)
+                        }
+                    }
+                    
+                }.frame(alignment: Alignment.center)
+                    .background(Color(white: 0.9, opacity: 0.7))
+                    .padding(10)
+                    .background(Color(white: 0.9, opacity: 0.7))
                 
-            }.frame(alignment: Alignment.center)
-                .background(Color(white: 0.9, opacity: 0.7))
-                .padding(10)
-                .background(Color(white: 0.9, opacity: 0.7))
-            
+            }
+            .background(Color.white)
         }
-        .background(Color.white)
         
         .navigationTitle("---") //inutulizable casi
         .listStyle(.plain)
@@ -61,37 +67,37 @@ struct PantallaAgenda: View {
             ZStack{
                 Circle()
                     .frame(width: 100)
-                    .foregroundStyle(Color.green)
-                Rectangle()
+                    .foregroundStyle(Color.red)
+                Circle()
                     .frame(width: 65, height: 65)
-                    .foregroundColor(Color.cyan)
-                Image(systemName: "plus")
                     .foregroundColor(Color.white)
+                Image(systemName: "plus")
+                    .foregroundColor(Color.red)
             }
             .padding(15)
-            .onTapGesture {
+            /*.onTapGesture {
                 print("Falta implementar la seccion de agregar contacto")
                 pantalla_a_mostrar = PantallasDisponibles.pantalla_agregar
-            }
+            }*/
             
             Spacer()
             
             ZStack{
                 Circle()
                     .frame(width: 100)
-                    .foregroundStyle(Color.green)
+                    .foregroundStyle(Color.blue)
                 Circle()
                     .frame(width: 65, height: 65)
-                    .foregroundColor(Color.cyan)
-                Image(systemName: "shuffle")
                     .foregroundColor(Color.white)
+                Image(systemName: "shuffle")
+                    .foregroundColor(Color.blue)
             }
             .padding(15)
             .onTapGesture {
                 print("Lanzar un intent para comenzar la llamada")
                 pantalla_a_mostrar = PantallasDisponibles.pantalla_del_ganador
             }
-        }.background(Color.purple)
+        }.background(Color.white)
             .sheet(item: $pantalla_a_mostrar){ pantalla in
                 switch(pantalla){
                 case .pantalla_agregar:

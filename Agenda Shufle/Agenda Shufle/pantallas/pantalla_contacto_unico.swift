@@ -1,17 +1,15 @@
 //
-//  pantalla_del_ganador.swift
+//  pantalla_contacto_unico.swift
 //  Agenda Shufle
 //
-//  Created by alumno on 3/5/25.
+//  Created by alumno on 3/12/25.
 //
 
 import SwiftUI
-
-var contacto_alterno = ContactoAgenda(nombre: "ELefoncio", telefono: "656231")
-struct pantalla_del_ganador: View {
-    var contacto_a_molestar: ContactoAgenda
+var contacto_alternodos = ContactoAgenda(nombre: "ELefoncio", telefono: "656231")
+struct pantalla_contacto_unico: View {
+    var contacto_a_molestardos: ContactoAgenda
     var body: some View {
-        
         VStack{
             ZStack{
                 ZStack {
@@ -29,8 +27,8 @@ struct pantalla_del_ganador: View {
             HStack{
                 Spacer()
                 VStack{
-                    Text(contacto_a_molestar.nombre).padding(.bottom, 10)
-                    Text(contacto_a_molestar.telefono)
+                    Text(contacto_a_molestardos.nombre).padding(.bottom, 10)
+                    Text(contacto_a_molestardos.telefono)
                 }
                 Spacer()
                 ZStack{
@@ -57,5 +55,5 @@ struct pantalla_del_ganador: View {
 }
 
 #Preview {
-    pantalla_del_ganador(contacto_a_molestar: contacto_alterno)
+    pantalla_contacto_unico(contacto_a_molestardos:contacto_alternodos)
 }

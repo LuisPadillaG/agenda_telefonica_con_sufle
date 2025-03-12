@@ -19,7 +19,7 @@ struct ContactoPrevista: View {
                 Image("Goku")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 55, alignment: .topLeading)
+                    .frame(width: 80, alignment: .topLeading)
                     .clipShape(RoundedRectangle(cornerSize: esquinas_redondeadas))
             }.background(Color.white)
                 
@@ -29,9 +29,11 @@ struct ContactoPrevista: View {
                 Text(contacto_a_mostrar.nombre)
                     .font(.system(size: 24, weight: .bold))
                     .padding(.horizontal, 10)
+                    .foregroundColor(.black)
                 Text(contacto_a_mostrar.telefono)
                     .font(.system(size: 16, weight: .medium))
                     .padding(.horizontal, 10)
+                    .foregroundColor(.gray)
             })
             .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
             .frame(height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
@@ -48,6 +50,7 @@ struct ContactoPrevista: View {
         .onTapGesture {
             al_pulsar()
         }
+        .shadow(color: .gray, radius: 13, x: 2, y: 0)
     }
 }
 
