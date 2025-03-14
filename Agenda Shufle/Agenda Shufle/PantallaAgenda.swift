@@ -75,10 +75,10 @@ struct PantallaAgenda: View {
                     .foregroundColor(Color.red)
             }
             .padding(15)
-            /*.onTapGesture {
+            .onTapGesture {
                 print("Falta implementar la seccion de agregar contacto")
                 pantalla_a_mostrar = PantallasDisponibles.pantalla_agregar
-            }*/
+            }
             
             Spacer()
             
@@ -103,18 +103,31 @@ struct PantallaAgenda: View {
                 case .pantalla_agregar:
                     PantallaAgregarContacto(
                         boton_salir: {
-                            pantalla_a_mostrar = PantallasDisponibles.pantalla_del_ganador
+                            pantalla_a_mostrar = nil
                             
                     },
                         boton_agregar: {nombre, numero in
                             let contacto_nuevo = ContactoAgenda(nombre: nombre, telefono:
                                                                     numero)
                             contactos_actuales.append(contacto_nuevo)
-                            pantalla_a_mostrar = nil
+                            pantalla_a_mostrar = PantallasDisponibles.pantalla_del_ganador
                             
                         }
                         
                     )
+                /*
+                 case .pantalla_agregar:
+                                 pantalla_agregar_contacto(
+                                     boton_salir: {
+                                         pantalla_a_mostrar = nil
+                                 },
+                                     boton_agregar: {nombre, numero in
+                                        let contacto_nuevo = ContactoAgenda(nombre: nombre, telefono: numero)
+                                        contactos_actuales.append(contacto_nuevo)
+                                        pantalla_a_mostrar = PantallasDisponibles.pantalla_del_ganador
+                                    }
+                                 )
+                 */
                 
                 case .pantalla_del_ganador:
                                 pantalla_del_ganador(contacto_a_molestar: contactos_actuales.randomElement() ?? ContactoAgenda(nombre: "Desconocido", telefono: "0000"))
